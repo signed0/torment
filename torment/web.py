@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.debug = os.environ.get('DEBUG', False)
 
 # Import all the views for the app
-from .views import *
+from torment.views import *
 
 if __name__ == '__main__':
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)

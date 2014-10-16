@@ -15,6 +15,7 @@ def make_call(to, call_url):
     data = {'From': FROM_NUMBER,
             'To': to,
             'Url': call_url,
+            'Method': 'GET',
             'IfMachine': 'Hangup'
             }
     r = requests.post(url, data=data, auth=(ACCOUNT_SID, AUTH_TOKEN))

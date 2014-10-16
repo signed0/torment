@@ -1,5 +1,4 @@
-from flask import abort
-
+from flask import abort, request, Response
 
 from torment import api
 from torment.web import app
@@ -26,13 +25,15 @@ def yell(person):
 
 @app.route('/<person>/text')
 def text(person):
-    api.text(get_pn(person))
+    text = request.args.get('t')
+    api.text(get_pn(person), text)
     return 'success'
 
 
 @app.route('/<person>/image')
 def image(person):
-    api.image(get_pn(person))
+    q = request.args.get('q')
+    api.image(get_pn(person), q)
     return 'success'
 
 
@@ -44,10 +45,11 @@ def surprise(person):
 
 @app.route('/sounds.xml')
 def sounds():
-    return '''<?xml version="1.0" encoding="UTF-8"?>
+    xml = '''<?xml version="1.0" encoding="UTF-8"?>
         <Response>
             <Play>http://com.twilio.music.ambient.s3.amazonaws.com/gurdonark_-_Exurb.mp3</Play>
             <Play>http://com.twilio.music.ambient.s3.amazonaws.com/gurdonark_-_Plains.mp3</Play>
             <Play>http://com.twilio.music.ambient.s3.amazonaws.com/aerosolspray_-_Living_Taciturn.mp3</Play>
             <Redirect/>
         </Response>'''
+    return Response(xml, mimetype='text/xml')

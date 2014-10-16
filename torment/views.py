@@ -47,9 +47,7 @@ def surprise(person):
 def sounds():
     xml = '''<?xml version="1.0" encoding="UTF-8"?>
         <Response>
-            <Play>http://com.twilio.music.ambient.s3.amazonaws.com/gurdonark_-_Exurb.mp3</Play>
-            <Play>http://com.twilio.music.ambient.s3.amazonaws.com/gurdonark_-_Plains.mp3</Play>
-            <Play>http://com.twilio.music.ambient.s3.amazonaws.com/aerosolspray_-_Living_Taciturn.mp3</Play>
+            <Play>http://graphics8.nytimes.com/images/blogs/thelede/posts/vomit.mp3</Play>
             <Redirect/>
         </Response>'''
     return Response(xml, mimetype='text/xml')

@@ -25,14 +25,14 @@ def yell(person):
 
 @app.route('/<person>/text')
 def text(person):
-    text = request.args.get('t')
+    text = request.args['t']
     api.text(get_pn(person), text)
     return 'success'
 
 
 @app.route('/<person>/image')
 def image(person):
-    q = request.args.get('q')
+    q = request.args['q']
     api.image(get_pn(person), q)
     return 'success'
 

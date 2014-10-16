@@ -10,14 +10,15 @@ AUTH_TOKEN = settings.TWILIO_AUTH_TOKEN
 FROM_NUMBER = settings.TWILIO_FROM_NUMBER
 
 
-def make_call(to, url):
+def make_call(to, call_url):
     url = BASE_URL.format(account_sid=ACCOUNT_SID, endpoint='Calls.json')
     data = {'From': FROM_NUMBER,
             'To': to,
-            'Url': url,
+            'Url': call_url,
             'IfMachine': 'Hangup'
             }
-    requests.post(url, data=data, auth=(ACCOUNT_SID, AUTH_TOKEN))
+    r = requests.post(url, data=data, auth=(ACCOUNT_SID, AUTH_TOKEN))
+    r.raise_for_status()
 
 
 def send_text(to, text=None, image_url=None):
@@ -27,4 +28,5 @@ def send_text(to, text=None, image_url=None):
         data['Body'] = text
     if image_url:
         data['MediaUrl'] = image_url
-    requests.post(url, data=data, auth=(ACCOUNT_SID, AUTH_TOKEN))
+    r = requests.post(url, data=data, auth=(ACCOUNT_SID, AUTH_TOKEN))
+    r.raise_for_status()

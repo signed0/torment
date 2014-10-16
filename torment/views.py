@@ -45,9 +45,8 @@ def surprise(person):
 
 @app.route('/sounds.xml')
 def sounds():
-    xml = '''<?xml version="1.0" encoding="UTF-8"?>
-        <Response>
-            <Play>http://graphics8.nytimes.com/images/blogs/thelede/posts/vomit.mp3</Play>
-            <Redirect/>
-        </Response>'''
+    xml = ('<?xml version="1.0" encoding="UTF-8"?>'
+           '<Response>',
+           '<Play>http://graphics8.nytimes.com/images/blogs/thelede/posts/vomit.mp3</Play>'
+           '</Response>')
     return Response(xml, mimetype='text/xml')

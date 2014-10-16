@@ -1,0 +1,5 @@
+*.pyc
+
+torment/local_settings.py
+
+Torment.egg-info/*

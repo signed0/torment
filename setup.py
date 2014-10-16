@@ -8,7 +8,7 @@ setup(
     packages=['torment'],
     author='Nathan Villaescusa',
     author_email='nathan@signedzero.com',
-    description='A tool for tormenting paul',
+    description='A tool for tormenting Paul',
     url='',
     license='BSD',
     entry_points={},

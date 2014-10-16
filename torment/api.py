@@ -14,7 +14,7 @@ def text(to, text):
 
 
 def call(to):
-    twilio.make_call(to, "http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")
+    twilio.make_call(to, "http://torment.herokuapp.com/sounds.xml")
 
 
 def image(to, image):

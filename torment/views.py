@@ -12,11 +12,6 @@ def get_pn(person):
         abort(404)
 
 
-@app.route('/')
-def index(person):
-    return 'this was a test'
-
-
 @app.route('/<person>/hotdog')
 def hotdog(person):
     api.hotdog(get_pn(person))
@@ -45,3 +40,14 @@ def image(person):
 def surprise(person):
     api.random_image(get_pn(person))
     return 'success'
+
+
+@app.route('/sounds.xml')
+def sounds():
+    return '''<?xml version="1.0" encoding="UTF-8"?>
+        <Response>
+            <Play>http://com.twilio.music.ambient.s3.amazonaws.com/gurdonark_-_Exurb.mp3</Play>
+            <Play>http://com.twilio.music.ambient.s3.amazonaws.com/gurdonark_-_Plains.mp3</Play>
+            <Play>http://com.twilio.music.ambient.s3.amazonaws.com/aerosolspray_-_Living_Taciturn.mp3</Play>
+            <Redirect/>
+        </Response>'''

@@ -1,4 +1,4 @@
-from .web import app
+from torment.web import app
 
 
 @app.route('/')

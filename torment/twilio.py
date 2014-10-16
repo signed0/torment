@@ -1,6 +1,6 @@
 import requests
 
-from . import settings
+from torment import settings
 
 BASE_URL = 'https://api.twilio.com/2010-04-01/Accounts/{account_sid}/{endpoint}'
 

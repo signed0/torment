@@ -3,8 +3,8 @@ import random
 
 import requests
 
-from . import settings
-from . import twilio
+from torment import settings
+from torment import twilio
 
 
 def get_image_url(query, animated=False, safe=True):

@@ -1,7 +1,7 @@
 import random
 
 from flask import abort, request, Response
-from lxml import etree, tostring
+from lxml import etree
 
 from torment import api
 from torment import settings
@@ -39,7 +39,6 @@ def speak(person):
     text = request.args['t']
     api.speak(get_pn(person), text)
     return 'success'
-
 
 
 @app.route('/<person>/image')

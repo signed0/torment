@@ -1,6 +1,7 @@
 import random
 
 from flask import abort, request, Response
+from lxml.etree import etree, tostring
 
 from torment import api
 from torment import settings
@@ -48,7 +49,18 @@ def surprise(person):
 
 @app.route('/sounds.xml')
 def sounds():
-    xml = ('<?xml version="1.0" encoding="UTF-8"?>'
-           '<Response><Play loop="10">%s</Play></Response>' % random.choice(settings.SOUNDS)
-           )
-    return Response(xml, mimetype='text/xml')
+    response = etree.Element('Response')
+    play = etree.SubElement(response, 'Play')
+    play.text = random.choice(settings.SOUNDS)
+    return Response(tostring(response), mimetype='text/xml')
+
+
+@app.route('/say.xml')
+def say():
+    gender = request.args.get('gender', 'woman')
+    text = request.args['t']
+
+    response = etree.Element('Response')
+    play = etree.SubElement(response, 'Say', voice=gender)
+    play.text = text
+    return Response(tostring(response), mimetype='text/xml')

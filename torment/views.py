@@ -3,13 +3,8 @@ import random
 from flask import abort, request, Response
 
 from torment import api
+from torment import settings
 from torment.web import app
-
-
-SCREAMS = [
-    'http://demo.twilio.com/hellomonkey/monkey.mp3',
-    'http://graphics8.nytimes.com/images/blogs/thelede/posts/vomit.mp3'
-]
 
 
 def get_pn(person):
@@ -54,6 +49,6 @@ def surprise(person):
 @app.route('/sounds.xml')
 def sounds():
     xml = ('<?xml version="1.0" encoding="UTF-8"?>'
-           '<Response><Play>%s</Play></Response>' % random.choice(SCREAMS)
+           '<Response><Play loop="10">%s</Play></Response>' % random.choice(settings.SOUNDS)
            )
     return Response(xml, mimetype='text/xml')

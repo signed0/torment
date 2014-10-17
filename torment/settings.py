@@ -5,7 +5,7 @@ TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
 TWILIO_FROM_NUMBER = os.environ.get('TWILIO_FROM_NUMBER')
 
 IMAGES = [
-    'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2013/12/Hot-Dog-3.jpg'
+    'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2013/12/Hot-Dog-3.jpg',
     'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2013/12/miley-cyrus-vma-twerk.gif',
     'http://i.imgur.com/f3QKbfv.jpg',
     'http://i.imgur.com/uExWM8G.jpg',

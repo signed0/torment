@@ -1,3 +1,4 @@
+from urllib import quote_plus
 import random
 
 from torment import settings
@@ -35,6 +36,10 @@ def hotdog(to):
 
 def random_image(to):
     twilio.send_text(to, image_url=random.choice(settings.IMAGES))
+
+
+def speak(to, text):
+    twilio.make_call(to, "http://torment.herokuapp.com/say.xml?t=" + quote_plus(text))
 
 
 # Methods and the number of arguments they take

@@ -1,7 +1,7 @@
 import random
 
 from flask import abort, request, Response
-from lxml.etree import etree, tostring
+from lxml import etree, tostring
 
 from torment import api
 from torment import settings
@@ -34,6 +34,14 @@ def text(person):
     return 'success'
 
 
+@app.route('/<person>/speak')
+def speak(person):
+    text = request.args['t']
+    api.speak(get_pn(person), text)
+    return 'success'
+
+
+
 @app.route('/<person>/image')
 def image(person):
     q = request.args['q']
@@ -52,7 +60,7 @@ def sounds():
     response = etree.Element('Response')
     play = etree.SubElement(response, 'Play')
     play.text = random.choice(settings.SOUNDS)
-    return Response(tostring(response), mimetype='text/xml')
+    return Response(etree.tostring(response), mimetype='text/xml')
 
 
 @app.route('/say.xml')
@@ -63,4 +71,4 @@ def say():
     response = etree.Element('Response')
     play = etree.SubElement(response, 'Say', voice=gender)
     play.text = text
-    return Response(tostring(response), mimetype='text/xml')
+    return Response(etree.tostring(response), mimetype='text/xml')

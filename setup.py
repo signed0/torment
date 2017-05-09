@@ -7,7 +7,6 @@ setup(
     version='0.1.0',
     packages=['torment'],
     author='Nathan Villaescusa',
-    author_email='nathan@chartio.com',
     description='A tool for tormenting Paul',
     url='',
     license='BSD',

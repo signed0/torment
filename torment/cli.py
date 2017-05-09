@@ -6,7 +6,7 @@ from torment import api
 
 def main():
     parser = argparse.ArgumentParser(description='Make people happy.')
-    parser.add_argument('method', choices=api.METHODS.keys())
+    parser.add_argument('method', choices=list(api.METHODS.keys()))
     parser.add_argument('person')
     parser.add_argument('args', metavar='N', nargs='*')
     args = parser.parse_args()
